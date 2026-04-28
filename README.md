@@ -1,15 +1,15 @@
 # Fold2Exp
 
-##概要
+## 概要
 Alpha　Fold2やRoseTTAFoldはタンパク質構造予測を大きく前進させたが、依然として計算資源にかかる問題は大きなボトルネックとして残留している。
 本プロジェクトでは、とくにAlphaFold　Datebase（以下AFDBと略）に公開されている予測構造とRCSB　PDBに公開されている実験構造およびメタデータを比較し、そのズレを定量化することにより、構造予測AIがどのような配列、構造条件で実験構造から乖離しやすいのかを解析する。
 
-##構成
+## 構成
 本プロジェクトでは、RCSB　PDB由来の実験構造データをＥ、AFDB由来の予測構造データをFとする。
 また、情報取得用の関数群として、それぞれ
 RCSB　PDBから実験構造Eを取得するePicker,AFDBから予測構造Fを取得するfPickerがある。
 
-##処理の流れ
+## 処理の流れ
 ePickerにはRCSB Search API、RCSB Data API、RCSB File Download Servicesを用い、fPickerには
 ePicker は、まずRCSB Search APIにより条件に合うprotein polymer entityを検索し、pdb_id と entity_id を取得する。次に、RCSB Data APIを用いてentry metadataおよびpolymer entity metadataを取得する。さらに、RCSB File Download ServicesからmmCIF形式の実験構造ファイルを取得し、これらの情報を E として整理する。
 
